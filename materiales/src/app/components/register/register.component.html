@@ -1,0 +1,26 @@
+<div class="container">
+
+    <div class="formContainer">
+        <div class="logo">
+            <h1>Artventory</h1>
+            <h2>Bienvenido/a</h2>
+        </div>
+        <form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
+            <div>
+                <input type="text" id="username" name="username" placeholder="Nombre de usuario" ngModel>
+                <input type="text" id="email" name="email" placeholder="Email" ngModel>
+            </div>
+            <div>
+                <input type="password" id="password" name="password" placeholder="Contraseña" ngModel>
+                <input type="password" id="repassword" name="repassword" placeholder="Vuelve a escribirla" ngModel>
+            </div>
+            <div>
+                <input type="text" id="firstname" name="firstname" placeholder="Nombre" ngModel>
+                <input type="text" id="lastname" name="lastname" placeholder="Apellidos" ngModel>
+            </div>
+            <div class="buttons">
+                <button type="submit" class="primary">Registrarse</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+ul{
+    list-style:  none;
+    display: flex;
+    background-color: whitesmoke;
+}
+li a{
+    color:black;
+    text-decoration: none;
+}
+li{
+    
+    padding: 1rem;
+}
+li:hover{
+    background-color: grey;
+    a{
+        color:white;
+    }
+}
+li.active{
+    background-color: aquamarine;
+    a{
+        color:black;
+    }
+}
+.perfil{
+    display: flex;
+    right:0;
+    position: absolute;
+    margin-right: 4em;
+}
