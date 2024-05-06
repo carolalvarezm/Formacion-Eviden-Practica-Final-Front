@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { userModel } from '../../models/user.model';
+import { registeRequest } from '../../models/registerRequest';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +12,7 @@ constructor(){
 
 }
 register(form:NgForm){
-  const user:userModel={
+  const user:registeRequest={
     username:form.value.username,
     password:form.value.password,
     email:form.value.email,

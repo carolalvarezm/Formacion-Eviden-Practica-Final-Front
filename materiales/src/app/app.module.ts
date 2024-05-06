@@ -10,6 +10,13 @@ import { RegisterComponent } from './components/register/register.component';
 import { ProductosComponent } from './components/productos/productos.component';
 import { ProductoComponent } from './components/producto/producto.component';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from './services/auth.service';
+import { HttpClient, HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
+import { PerfilComponent } from './components/perfil/perfil.component';
+import { UserService } from './services/user.service';
+import { jwtInterceptor } from './interceptors/jwt.interceptor';
+import { MarcasComponent } from './components/marcas/marcas.component';
+import { CategoriasComponent } from './components/categorias/categorias.component';
 
 @NgModule({
   declarations: [
@@ -19,14 +26,18 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     RegisterComponent,
     ProductosComponent,
-    ProductoComponent
+    ProductoComponent,
+    PerfilComponent,
+    MarcasComponent,
+    CategoriasComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [AuthService,UserService,provideHttpClient(withInterceptors([jwtInterceptor]))],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
