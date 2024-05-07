@@ -1,0 +1,13 @@
+<div class="card" >
+    <div class="text">
+        <p>Nombre: <span>{{marca.name}}</span></p>
+        <p>Descripción: <span>{{marca.description}}</span></p>
+    </div>
+    <div class="image">
+        @if(marca.image!=null){
+            <img src="marca.image">
+        }@else{
+            <img src="https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg">
+        }
+    </div>
+</div>

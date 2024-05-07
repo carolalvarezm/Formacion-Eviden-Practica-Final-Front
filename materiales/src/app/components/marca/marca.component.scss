@@ -1,0 +1,32 @@
+.card 
+{
+        position: relative;
+        width: 100%;
+        height: auto;
+        max-width: 320px;
+        max-height: 240px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align-last: left;
+        box-shadow: 5px 5px 5px lightgray;
+}
+img{
+    width: 100%;
+    height: auto;
+    max-width: 320px;
+    max-height: 240px;
+}
+.card .image,
+.card .text {
+    transition: opacity 0.5s ease-in-out;
+}
+.card .text 
+{
+    position:absolute; 
+    opacity:0;
+    text-align: center;
+}
+
+.card:hover .image {opacity:0;}
+.card:hover .text {opacity:1;}

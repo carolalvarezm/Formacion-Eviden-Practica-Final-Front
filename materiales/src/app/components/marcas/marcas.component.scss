@@ -1,0 +1,18 @@
+.grid{
+    margin: 2rem;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+}
+.title h1{
+    margin: 2rem;
+}
+.toolbar{
+    margin:1rem;
+    button{
+        margin: 1rem;
+        padding: 1rem;
+        background-color: lightcyan;
+        border:none;
+        box-shadow:  10px 5px 5px lightgray;
+    }
+}

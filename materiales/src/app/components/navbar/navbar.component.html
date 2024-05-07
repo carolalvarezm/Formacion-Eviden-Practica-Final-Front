@@ -1,8 +1,8 @@
 <ul>
     <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><a routerLink="" >Home</a></li>
-    <li>Marcas</li>
-    <li>Categorías</li>
-    <li>Productos</li>
+    <li routerLinkActive="active"><a routerLink="marcas" >Marcas</a></li>
+    <li routerLinkActive="active"><a routerLink="categorias" >Categorías</a></li>
+    <li routerLinkActive="active"><a routerLink="productos" >Productos</a></li>
     
     <div class="perfil">
     <li routerLinkActive="active" *ngIf="isLogin()"><a routerLink="perfil" >Mi Perfil</a></li>

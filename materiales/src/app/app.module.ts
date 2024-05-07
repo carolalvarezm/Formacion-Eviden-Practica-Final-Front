@@ -11,12 +11,17 @@ import { ProductosComponent } from './components/productos/productos.component';
 import { ProductoComponent } from './components/producto/producto.component';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from './services/auth.service';
-import { HttpClient, HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
+import {  HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { UserService } from './services/user.service';
 import { jwtInterceptor } from './interceptors/jwt.interceptor';
 import { MarcasComponent } from './components/marcas/marcas.component';
 import { CategoriasComponent } from './components/categorias/categorias.component';
+import { MarcaService } from './services/marca.service';
+import { MarcaComponent } from './components/marca/marca.component';
+import { MarcaEditComponent } from './components/marca-edit/marca-edit.component';
+import { provideRouter, withComponentInputBinding } from '@angular/router';
+
 
 @NgModule({
   declarations: [
@@ -29,15 +34,23 @@ import { CategoriasComponent } from './components/categorias/categorias.componen
     ProductoComponent,
     PerfilComponent,
     MarcasComponent,
-    CategoriasComponent
+    CategoriasComponent,
+    MarcaComponent,
+    MarcaEditComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+
   ],
-  providers: [AuthService,UserService,provideHttpClient(withInterceptors([jwtInterceptor]))],
+  providers: [
+    AuthService,
+    UserService,
+    MarcaService,
+    provideHttpClient(withInterceptors([jwtInterceptor])),
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

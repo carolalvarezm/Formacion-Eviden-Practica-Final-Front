@@ -1,1 +1,16 @@
-<p>marcas works!</p>
+<div class="marcas">
+    <div>
+        <div class="title">
+            <h1>Marcas</h1>
+        </div>
+        <div class="toolbar">
+            <button (click)="create()">Crear Marca</button>
+
+        </div>
+        <div class="grid">
+            @for(marca of marcas;track marca){
+                <app-marca [marca]="marca" (click)="edit(marca.id)"></app-marca>
+            }
+        </div>
+    </div>
+</div>
