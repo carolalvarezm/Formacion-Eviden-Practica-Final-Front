@@ -1,12 +1,12 @@
 <div class="marcas">
     <div>
-        <!-- <div class="title">
+        <div class="title">
             @if(id!=null){
                 <h1 >Editando {{name}} </h1>
             }@else{
-                <h1>Nueva Producto</h1>
+                <h1>Nuevo Producto</h1>
             }
-        </div> -->
+        </div>
         <div class="toolbar">
             <button class="btn btn-primary" (click)="save()">Guardar</button>
             <button class="btn btn-primary" (click)="saveAndClose()">Guardar y cerrar</button>
@@ -20,6 +20,25 @@
                 <input class="form-control" type="text" placeholder="Descripción" name="description" [(ngModel)]="description">
                 <label for="image">Image:</label>
                 <input class="form-control" type="image" placeholder="Imagen" name="image" [(ngModel)]="image">
+                <label for="cats">Categoría:</label>
+                <select  [compareWith]="compare" class="form-select" [(ngModel)]="categories" name="categories" multiple>
+                    @for(cat of allCategories;track cat){
+                        <option *ngIf="cat!=null" [value]="cat"  >{{cat.name}}</option>
+                    }
+                  </select>
+                <select  class="form-select" [compareWith]="compare"  [(ngModel)]="marca" name="marca" >
+                    <option selected value="null">Selecciona Marca</option>
+                    @for(brand of allBrands;track brand){
+                        <option  [ngValue]="brand">{{brand?.name}}</option>
+                    }
+                  </select>
+                  <select  class="form-select" [compareWith]="compare" [(ngModel)]="serie" name="serie" >
+                    <option selected value="null">Selecciona Serie</option>
+                    @for(serie of allSeries;track serie){
+                        <option  [ngValue]="serie">{{serie?.name}}</option>
+                    }
+                  </select>
+                 
             </form>   
         </div>
     </div>

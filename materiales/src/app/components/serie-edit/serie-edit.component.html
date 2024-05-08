@@ -1,16 +1,15 @@
-<div class="marcas">
+<div class="series">
     <div>
         <div class="title">
             @if(id!=null){
                 <h1 >Editando {{name}} </h1>
             }@else{
-                <h1>Nueva Marca</h1>
+                <h1>Nueva Serie</h1>
             }
         </div>
         <div class="toolbar">
             <button class="btn btn-primary" (click)="save()">Guardar</button>
             <button class="btn btn-primary" (click)="saveAndClose()">Guardar y cerrar</button>
-            <button class="btn btn-primary" (click)="createSerie()">Crear nueva serie</button>
             <button class="btn btn-danger" (click)="close()">Cerrar</button>
         </div>
         <div class="form">
@@ -19,12 +18,14 @@
                 <input class="form-control" type="text" placeholder="Nombre" name="name" [(ngModel)]="name">
                 <label for="name">Descripción:</label>
                 <input class="form-control" type="text" placeholder="Descripción" name="description" [(ngModel)]="description">
-                <label for="image">Image:</label>
-                <input class="form-control" type="image" placeholder="Imagen" name="image" [(ngModel)]="image">
+               <label for="brand">Marca:</label>
+               <select  class="form-select" [compareWith]="compare"  [(ngModel)]="brand" name="brand" >
+                <option selected value="null">Selecciona Marca</option>
+                @for(brand of allBrands;track brand){
+                    <option  [ngValue]="brand">{{brand?.name}}</option>
+                }
+              </select>
             </form>   
-        </div>
-        <div class="series">
-            <app-series [series]="series"></app-series>
         </div>
     </div>
 </div>

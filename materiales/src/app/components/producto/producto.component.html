@@ -1,18 +1,20 @@
 <div class="card" >
     <div class="image">
         @if(producto.image!=null){
-            <img class="card-img-top" src="marca.image">
+            <img class="card-img-top" src="{{producto.image}}">
         }@else{
             <img class="card-img-top" src="https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg">
         }
     </div>
     <div class="card-body">
         <h2 class="card-title">{{producto.name}}</h2>
-        <p class="card-text" *ngIf="producto.serie!=null">{{producto.serie.brand.name}}</p>
+        <p class="card-text" *ngIf="producto.brand!=null">{{producto.brand.name}}</p>
         <p class="card-text" *ngIf="producto.serie!=null">{{producto.serie.name}}</p>
         <p class="card-text" *ngIf="producto.categories.length>0"><span>[</span>
-            @for(cat of producto.categories;track cat){
-                <span > {{cat.name}} </span>
+            @for(cat of producto.categories;track cat;let idx = $index){
+                <span > {{cat.name}}</span>
+                    @if(idx+1!==producto.categories.length)
+                    {<span>,</span>} 
             }
             <span>]</span>
         </p>

@@ -8,5 +8,6 @@ export interface productoModel {
     description:String;
     image:String|null;
     serie:serieModel|null;
+    brand:marcaModel|null;
     categories:categoriaModel[];
 }

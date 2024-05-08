@@ -1,13 +1,13 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <ul class="nav">
-        <li class="nav-item" ><a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" routerLink="" >Home</a></li>
-        <li class="nav-item" ><a class="nav-link" routerLinkActive="active" routerLink="marcas" >Marcas</a></li>
-        <li class="nav-item" ><a class="nav-link" routerLinkActive="active" routerLink="categorias" >Categorías</a></li>
-        <li class="nav-item" ><a class="nav-link" routerLinkActive="active" routerLink="productos" >Productos</a></li>
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><a class="nav-link"  routerLink="" >Home</a></li>
+        <li class="nav-item" routerLinkActive="active" ><a class="nav-link" routerLink="marcas" >Marcas</a></li>
+        <li class="nav-item" routerLinkActive="active"><a class="nav-link"  routerLink="categorias" >Categorías</a></li>
+        <li class="nav-item" routerLinkActive="active"><a class="nav-link"  routerLink="productos" >Productos</a></li>
         
         <div class="perfil">
-        <li class="nav-item" *ngIf="isLogin()"><a class="nav-link" routerLinkActive="active" routerLink="perfil" >Mi Perfil</a></li>
-        <li class="nav-item" *ngIf="!isLogin()"><a class="nav-link" routerLinkActive="active" routerLink="login" >Login</a></li>
+        <li class="nav-item" *ngIf="isLogin()" routerLinkActive="active"><a class="nav-link"  routerLink="perfil" >Mi Perfil</a></li>
+        <li class="nav-item" *ngIf="!isLogin()" routerLinkActive="active"><a class="nav-link"  routerLink="login" >Login</a></li>
         <li class="nav-item"><a class="nav-link" (click)="logout()" *ngIf="isLogin()">Logout</a></li>
         </div>
         

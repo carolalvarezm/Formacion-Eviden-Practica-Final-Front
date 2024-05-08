@@ -5,6 +5,9 @@ import { productoModel } from '../../models/producto.model';
 import { serieModel } from '../../models/serie.model';
 import { categoriaModel } from '../../models/categoria.model';
 import { marcaModel } from '../../models/marca.model';
+import { MarcaService } from '../../services/marca.service';
+import { CategoriaService } from '../../services/categoria.service';
+import { SerieService } from '../../services/serie.service';
 
 @Component({
   selector: 'app-product-edit',
@@ -17,24 +20,43 @@ export class ProductEditComponent {
   image:String|null=null;
   serie:serieModel|null=null;
   categories:categoriaModel[]=[];
-  brand:marcaModel|null=null;
+  marca:marcaModel|null=null;
   id:Number|null=null;
-  constructor(private productService:ProductoService,private route: ActivatedRoute,private router:Router){
+  allBrands:marcaModel[]=[];
+  allCategories:categoriaModel[]=[];
+  allSeries:serieModel[]=[];
+  allnumbers:Number[]=[1,2,3];
+  number:Number|null=1;
+  constructor(private productService:ProductoService,private serieService:SerieService,private brandService:MarcaService,private categoryService:CategoriaService,private route: ActivatedRoute,private router:Router){
   }
   ngOnInit(): void {
       
         const id =this.route.snapshot.queryParamMap.get('id') as number|null;
-        console.log(id);
-         if(id!=null)
+        
+        if(id!=null){
         this.productService.getById(id).subscribe(response=>{
+          
           const product=response as productoModel;
           this.name=product.name;
           this.description=product.description;
           this.image=product.image;
           this.id=product.id;
+          this.categories=product.categories;
+          this.marca=product.brand ;
+          this.serie=product.serie;
+        });}
+        console.log(this.marca)
+        this.brandService.getAll().subscribe(response=>{
+          this.allBrands=response as marcaModel[];
         });
-
+        this.categoryService.getAll().subscribe(response=>{
+          this.allCategories=response as categoriaModel[];
+        });
+        this.serieService.getAll().subscribe(response=>{
+          this.allSeries=response as serieModel[];
+        });
   }
+ 
   save(){
     const producto:productoModel={
       name:this.name,
@@ -43,6 +65,7 @@ export class ProductEditComponent {
       id:this.id,
       serie:this.serie,
       categories:this.categories,
+      brand:this.marca
     }
     if(this.id!=null){
       this.productService.editProducto(producto).subscribe(response=>{
@@ -56,8 +79,13 @@ export class ProductEditComponent {
     }
     
   }
+  compare(a:any,b:any){
+    
+    return a&&b?a.id==b.id:a===b;
+
+  }
   close(){
-    this.router.navigate(['products']);
+    this.router.navigate(['productos']);
   }
 
   saveAndClose(){
@@ -68,6 +96,7 @@ export class ProductEditComponent {
       id:this.id,
       serie:this.serie,
       categories:this.categories,
+      brand:this.marca
 
     }
     if(this.id!=null){

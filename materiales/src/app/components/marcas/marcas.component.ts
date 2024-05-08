@@ -15,7 +15,6 @@ marcas:marcaModel[]=[];
   ngOnInit(): void {
     this.marcaService.getAll().subscribe(response=>{
       this.marcas=response as marcaModel[];
-      console.log(response);
     });
   }
 

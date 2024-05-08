@@ -1,0 +1,16 @@
+<div class="series container">
+    <div>
+        <div class="title">
+            <h1>Series:</h1>
+        </div>
+        <div class="cards">
+            <div class="row">
+                @for(serie of series;track serie){
+                    <div class="col-lg-3 col-md-3  d-flex align-items-stretch">
+                        <app-serie (serieEliminada)="delete($event)" [serie]="serie" ></app-serie>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

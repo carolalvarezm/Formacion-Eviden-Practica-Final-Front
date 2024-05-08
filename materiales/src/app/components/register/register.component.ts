@@ -19,7 +19,6 @@ register(form:NgForm){
     firstname:form.value.firstname,
     lastname:form.value.lastname
   }
-  console.log(user);
 
 }
 }

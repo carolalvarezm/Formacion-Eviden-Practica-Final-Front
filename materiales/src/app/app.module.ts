@@ -25,6 +25,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CategoriasEditComponent } from './components/categorias-edit/categorias-edit.component';
 import { CategoriaComponent } from './components/categoria/categoria.component';
 import { ProductEditComponent } from './components/product-edit/product-edit.component';
+import { SeriesComponent } from './components/series/series.component';
+import { SerieComponent } from './components/serie/serie.component';
+import { SerieEditComponent } from './components/serie-edit/serie-edit.component';
 
 
 @NgModule({
@@ -44,6 +47,9 @@ import { ProductEditComponent } from './components/product-edit/product-edit.com
     CategoriasEditComponent,
     CategoriaComponent,
     ProductEditComponent,
+    SeriesComponent,
+    SerieComponent,
+    SerieEditComponent,
   ],
   imports: [
     BrowserModule,

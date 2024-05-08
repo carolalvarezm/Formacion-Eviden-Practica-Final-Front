@@ -16,7 +16,6 @@ export class CategoriasComponent {
     ngOnInit(): void {
       this.catService.getAll().subscribe(response=>{
         this.categorias=response as categoriaModel[];
-        console.log(response);
       });
     }
   

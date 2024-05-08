@@ -18,7 +18,6 @@ export class CategoriasEditComponent
   ngOnInit(): void {
       
         const id =this.route.snapshot.queryParamMap.get('id') as number|null;
-        console.log(id);
          if(id!=null)
         this.categoriaService.getById(id).subscribe(response=>{
           const categoria=response as categoriaModel;

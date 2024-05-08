@@ -15,7 +15,8 @@ export class ProductoComponent {
     description:"",
     image:null,
     serie:null,
-    categories:[]
+    categories:[],
+    brand:null
   };
   @Output() 
   productoEliminado = new EventEmitter<Number>();

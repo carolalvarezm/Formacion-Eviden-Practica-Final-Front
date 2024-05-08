@@ -24,6 +24,12 @@ export class ProductoService {
         catchError(this.handleError)
       );
     }
+    getByUsername(username:String){
+      const headers=new HttpHeaders({ 'Content-Type': 'application/json' });
+      return this.httpClient.get(this.serverUrl+"/api/v1/users/"+username+"/products",{"headers": headers}).pipe(
+        catchError(this.handleError)
+      );
+    }
     deleteProducto(id: Number | null) {
       const headers=new HttpHeaders({ 'Content-Type': 'application/json' });
       return this.httpClient.delete(this.serverUrl+"/api/v1/products/"+id,{"headers": headers,responseType: 'text'}).pipe(

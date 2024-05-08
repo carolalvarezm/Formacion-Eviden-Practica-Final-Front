@@ -11,6 +11,8 @@ import { MarcaEditComponent } from './components/marca-edit/marca-edit.component
 import { CategoriasEditComponent } from './components/categorias-edit/categorias-edit.component';
 import { ProductEditComponent } from './components/product-edit/product-edit.component';
 import { authGuard } from './guards/auth.guard';
+import { SeriesComponent } from './components/series/series.component';
+import { SerieEditComponent } from './components/serie-edit/serie-edit.component';
 
 
 const routes: Routes = [
@@ -22,9 +24,11 @@ const routes: Routes = [
   {path:"marcas", component:MarcasComponent,canActivate:[authGuard]},
   {path:"categorias",component:CategoriasComponent,canActivate:[authGuard]},
   {path:"productos",component:ProductosComponent,canActivate:[authGuard]},
+  {path:"series",component:SeriesComponent,canActivate:[authGuard]},
   {path:"marca-edit",component:MarcaEditComponent,canActivate:[authGuard]},
   {path:"categoria-edit",component:CategoriasEditComponent,canActivate:[authGuard]},
-  {path:"producto-edit", component:ProductEditComponent,canActivate:[authGuard]}
+  {path:"producto-edit", component:ProductEditComponent,canActivate:[authGuard]},
+  {path:"serie-edit", component:SerieEditComponent,canActivate:[authGuard]}
 ];
 
 @NgModule({
