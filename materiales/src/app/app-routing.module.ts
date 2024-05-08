@@ -8,18 +8,23 @@ import { MarcasComponent } from './components/marcas/marcas.component';
 import { CategoriasComponent } from './components/categorias/categorias.component';
 import { ProductosComponent } from './components/productos/productos.component';
 import { MarcaEditComponent } from './components/marca-edit/marca-edit.component';
+import { CategoriasEditComponent } from './components/categorias-edit/categorias-edit.component';
+import { ProductEditComponent } from './components/product-edit/product-edit.component';
+import { authGuard } from './guards/auth.guard';
 
 
 const routes: Routes = [
   {path:"",component:HomeComponent},
   {path:"login",component:LoginComponent},
   {path:"register",component:RegisterComponent},
-  {path:"perfil", component:PerfilComponent},
+  {path:"perfil", component:PerfilComponent,canActivate:[authGuard]},
   {path:"home", component:HomeComponent},
-  {path:"marcas", component:MarcasComponent},
-  {path:"categorias",component:CategoriasComponent},
-  {path:"productos",component:ProductosComponent},
-  {path:"marca-edit",component:MarcaEditComponent}
+  {path:"marcas", component:MarcasComponent,canActivate:[authGuard]},
+  {path:"categorias",component:CategoriasComponent,canActivate:[authGuard]},
+  {path:"productos",component:ProductosComponent,canActivate:[authGuard]},
+  {path:"marca-edit",component:MarcaEditComponent,canActivate:[authGuard]},
+  {path:"categoria-edit",component:CategoriasEditComponent,canActivate:[authGuard]},
+  {path:"producto-edit", component:ProductEditComponent,canActivate:[authGuard]}
 ];
 
 @NgModule({

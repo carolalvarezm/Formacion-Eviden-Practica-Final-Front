@@ -1,13 +1,21 @@
 <div class="card" >
-    <div class="text">
-        <p>Nombre: <span>{{marca.name}}</span></p>
-        <p>Descripción: <span>{{marca.description}}</span></p>
-    </div>
     <div class="image">
         @if(marca.image!=null){
-            <img src="marca.image">
+            <img class="card-img-top" src="marca.image">
         }@else{
-            <img src="https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg">
+            <img class="card-img-top" src="https://detallesorballo.com/wp-content/uploads/2020/09/imagen-de-prueba-320x240-1.jpg">
         }
+    </div>
+    <div class="card-body">
+        <h2 class="card-title">{{marca.name}}</h2>
+        <p  class="card-text">{{marca.description}}</p>
+    </div>
+    <div class="card-footer">
+        <button class="btn btn-primary">
+            <i class="bi bi-pencil-square" (click)="edit()"></i>
+        </button>
+        <button class="btn btn-danger">
+            <i class="bi bi-trash" (click)="delete()"></i>
+        </button>
     </div>
 </div>

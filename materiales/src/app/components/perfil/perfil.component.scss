@@ -5,15 +5,15 @@
 }
 .container{
     background-color: lightblue;
-    padding: 1rem;
+    padding: 0.5rem;
+    margin: 1rem;
     h1{
-        margin: 1rem;
+        margin: 0.5rem;
     }
     width: 50rem;
     justify-content: center;
     align-items: center;
     height: 100%;
-    margin-top: 5rem;
     box-shadow:  10px 5px 5px lightgray;
     
     
@@ -22,16 +22,8 @@
     display: grid;
     grid-template-columns: auto auto auto;
     text-align: center;
-    button{
-        background-color: whitesmoke;
-        margin:1rem;
-        padding: 1rem;
-        border: none;
-        box-shadow:  5px 3px 3px lightgray;
-        &:hover{
-            background-color: gray;
-            color:white;
-        }
+    .btn{
+        margin: 0.5em;
     }
 
 }

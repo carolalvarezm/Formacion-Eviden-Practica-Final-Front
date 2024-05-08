@@ -1,10 +1,10 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MarcaService } from '../../services/marca.service';
-import { ActivatedRoute, Route, Router } from '@angular/router';
+import { ActivatedRoute,  Router } from '@angular/router';
 import { marcaModel } from '../../models/marca.model';
 
 @Component({
-  selector: 'app-marca-edit',
+  selector: 'app-app-marca-edit',
   templateUrl: './marca-edit.component.html',
   styleUrl: './marca-edit.component.scss'
 })
@@ -25,8 +25,7 @@ export class MarcaEditComponent implements OnInit{
           this.name=marca.name;
           this.description=marca.description;
           this.image=marca.image;
-          this.id=marca.id
-          console.log(marca);
+          this.id=marca.id;
         });
 
   }
@@ -52,9 +51,7 @@ export class MarcaEditComponent implements OnInit{
   close(){
     this.router.navigate(['marcas']);
   }
-  delete(){
-    console.log("Se ha eliminado");
-  } 
+
   saveAndClose(){
     const marca:marcaModel={
       name:this.name,

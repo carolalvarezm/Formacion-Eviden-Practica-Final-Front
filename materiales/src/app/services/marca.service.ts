@@ -9,6 +9,7 @@ import { marcaModel } from '../models/marca.model';
   providedIn: 'root'
 })
 export class MarcaService {
+
   constructor(private httpClient:HttpClient) { }
   serverUrl:String=environment.serverUrl;
 
@@ -21,6 +22,12 @@ export class MarcaService {
   getById(id:Number){
     const headers=new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.httpClient.get(this.serverUrl+"/api/v1/brands/"+id,{"headers": headers}).pipe(
+      catchError(this.handleError)
+    );
+  }
+  deleteMarca(id: Number | null) {
+    const headers=new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.httpClient.delete(this.serverUrl+"/api/v1/brands/"+id,{"headers": headers,responseType: 'text'}).pipe(
       catchError(this.handleError)
     );
   }

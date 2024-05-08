@@ -1,1 +1,20 @@
-<p>categorias works!</p>
+<div class="categorias container">
+    <div>
+        <div class="title">
+            <h1>Categorías</h1>
+        </div>
+        <div class="toolbar">
+            <button class="btn btn-primary" (click)="create()">Crear Categoría</button>
+
+        </div>
+        <div class="cards">
+            <div class="row">
+                @for(cat of categorias;track cat){
+                    <div class="col-lg-3 col-md-3  d-flex align-items-stretch">
+                        <app-categoria (catEliminada)="delete($event)" [cat]="cat" ></app-categoria>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

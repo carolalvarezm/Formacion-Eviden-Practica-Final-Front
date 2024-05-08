@@ -18,11 +18,14 @@ marcas:marcaModel[]=[];
       console.log(response);
     });
   }
-edit(marca:Number|null){
-  if(marca!=null)
-  this.router.navigate(['marca-edit'],{queryParams: {id: marca}})
-}
+
 create(){
   this.router.navigate(['marca-edit']);
+}
+delete(id:Number){
+ this.marcas= this.marcas.filter((i) =>
+  {
+    return i.id !== id;
+  })
 }
 }

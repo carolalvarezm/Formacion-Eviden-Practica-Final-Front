@@ -21,6 +21,10 @@ import { MarcaService } from './services/marca.service';
 import { MarcaComponent } from './components/marca/marca.component';
 import { MarcaEditComponent } from './components/marca-edit/marca-edit.component';
 import { provideRouter, withComponentInputBinding } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CategoriasEditComponent } from './components/categorias-edit/categorias-edit.component';
+import { CategoriaComponent } from './components/categoria/categoria.component';
+import { ProductEditComponent } from './components/product-edit/product-edit.component';
 
 
 @NgModule({
@@ -37,12 +41,16 @@ import { provideRouter, withComponentInputBinding } from '@angular/router';
     CategoriasComponent,
     MarcaComponent,
     MarcaEditComponent,
+    CategoriasEditComponent,
+    CategoriaComponent,
+    ProductEditComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    NgbModule,
 
   ],
   providers: [

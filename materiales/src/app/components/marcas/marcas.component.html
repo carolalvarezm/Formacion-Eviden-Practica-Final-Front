@@ -1,16 +1,20 @@
-<div class="marcas">
+<div class="marcas container">
     <div>
         <div class="title">
             <h1>Marcas</h1>
         </div>
         <div class="toolbar">
-            <button (click)="create()">Crear Marca</button>
+            <button class="btn btn-primary" (click)="create()">Crear Marca</button>
 
         </div>
-        <div class="grid">
-            @for(marca of marcas;track marca){
-                <app-marca [marca]="marca" (click)="edit(marca.id)"></app-marca>
-            }
+        <div class="cards">
+            <div class="row">
+                @for(marca of marcas;track marca){
+                    <div class="col-lg-3 col-md-3  d-flex align-items-stretch">
+                        <app-marca (marcaEliminada)="delete($event)" [marca]="marca" ></app-marca>
+                    </div>
+                }
+            </div>
         </div>
     </div>
 </div>

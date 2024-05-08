@@ -1,4 +1,4 @@
-<div class="container">
+<div class="contenedor">
 
     <div class="formContainer">
         <div class="logo">
@@ -8,11 +8,11 @@
         <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
             <div>
                 <label for="username">Nombre de Usuario: </label>
-                <input type="text" id="username" name="username" ngModel>
+                <input class="form-control" type="text" id="username" name="username" ngModel>
             </div>
             <div>
                 <label for="password">Contraseña: </label>
-                <input type="password" id="password" name="password" ngModel>
+                <input class="form-control" type="password" id="password" name="password" ngModel>
             </div>
             <div class="buttons">
                 <button type="submit" class="btn btn-primary">Iniciar Sesión</button>

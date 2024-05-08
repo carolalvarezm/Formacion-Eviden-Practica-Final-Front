@@ -52,7 +52,15 @@ export class AuthService {
   islogin(){
     return sessionStorage.getItem("token");
   }
-
+  isValid(){
+    const expiration:number|undefined=this.decodeToken().exp;
+    if(expiration!=undefined && expiration < Date.now()){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
   register(user:userModel){
     const headers=new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.httpClient.post(this.serverUrl+"/auth/register",user,{"headers": headers})

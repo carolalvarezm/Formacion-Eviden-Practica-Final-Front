@@ -1,10 +1,10 @@
-<div class="marcas">
+<div class="categorias">
     <div>
         <div class="title">
             @if(id!=null){
                 <h1 >Editando {{name}} </h1>
             }@else{
-                <h1>Nueva Marca</h1>
+                <h1>Nueva Categoría</h1>
             }
         </div>
         <div class="toolbar">
@@ -18,12 +18,8 @@
                 <input class="form-control" type="text" placeholder="Nombre" name="name" [(ngModel)]="name">
                 <label for="name">Descripción:</label>
                 <input class="form-control" type="text" placeholder="Descripción" name="description" [(ngModel)]="description">
-                <label for="image">Image:</label>
-                <input class="form-control" type="image" placeholder="Imagen" name="image" [(ngModel)]="image">
             </form>
 
-		   
-		   
         </div>
     </div>
 </div>

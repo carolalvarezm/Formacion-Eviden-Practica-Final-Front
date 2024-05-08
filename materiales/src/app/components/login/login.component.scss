@@ -1,48 +1,27 @@
-input {
-    padding: 0.5em;
-    margin: 0.4em;
-}
 
 .formContainer{
     background-color: whitesmoke;
     padding: 2.5rem;
-    width: 15em;
-    height: 20rem;
+    width: 20rem;
+    height: 25rem;
     align-content: center;
     text-align: center;
     box-shadow:  10px 5px 5px lightgray;
 }
 
-.container{
+.contenedor{
     display: flex;
     justify-content: center;
-    align-items: center;
     width: 100%;
-    height: 100%;
-    padding: 0;
+    height: auto;
+    padding: 1rem;
    
     
 }
 label{
     margin: 0.4em;
 }
-// button{
-//     padding: 1em;
-//     margin: 0.4em;
-//     color: white;
-// }
-// button.primary{
-//     background-color: cornflowerblue;
-//     &:hover{
-//         background-color: darken(cornflowerblue, 20%);
-//     }
-// }
-// button.second{
-//     background-color: darkorchid;
-//     &:hover{
-//         background-color: darken(darkorchid, 20%);
-//     }
-// }
+
 .buttons{
-    margin-top: 1em;
+    margin:1em 0;
 }
