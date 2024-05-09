@@ -26,5 +26,13 @@
         <button class="btn btn-danger">
             <i class="bi bi-trash" (click)="delete()"></i>
         </button>
+        <button *ngIf="!isFavorite" class="btn btn-primary" (click)="addToUser()">
+            <i  class="bi bi-heart" ></i>
+            
+        </button>
+        <button *ngIf="isFavorite" class="btn btn-primary" (click)="removeFromUser()">
+            <i class="bi bi-heart-fill"></i>
+        </button>
+        
     </div>
 </div>

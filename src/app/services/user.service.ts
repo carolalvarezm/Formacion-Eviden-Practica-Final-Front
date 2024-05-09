@@ -3,6 +3,7 @@ import { environment } from '../../environments/environment.development';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { userModel } from '../models/user.model';
 import { catchError, tap, throwError } from 'rxjs';
+import { productoModel } from '../models/producto.model';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,16 @@ export class UserService {
         return res;       
        
 
+      })),
+      catchError(this.handleError)
+    );
+  }
+  getUserProducts(username:String){
+    const headers=new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.httpClient.get(this.serverUrl+"/api/v1/users/"+username+"/products",{"headers": headers}).pipe(
+      tap((response => {
+        const res =  response as productoModel[];
+        return res;       
       })),
       catchError(this.handleError)
     );

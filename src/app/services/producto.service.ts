@@ -30,6 +30,18 @@ export class ProductoService {
         catchError(this.handleError)
       );
     }
+    addProductToUser(username:string,productId:Number|null){
+      const headers=new HttpHeaders({ 'Content-Type': 'application/json' });
+      return this.httpClient.post(this.serverUrl+"/api/v1/users/"+username+"/products/"+productId,{},{"headers": headers, responseType:'text'}).pipe(
+        catchError(this.handleError)
+      );
+    }
+    removeProductToUser(username:string,productId:Number|null){
+      const headers=new HttpHeaders({ 'Content-Type': 'application/json' });
+      return this.httpClient.delete(this.serverUrl+"/api/v1/users/"+username+"/products/"+productId,{"headers": headers, responseType:'text'}).pipe(
+        catchError(this.handleError)
+      );
+    }
     deleteProducto(id: Number | null) {
       const headers=new HttpHeaders({ 'Content-Type': 'application/json' });
       return this.httpClient.delete(this.serverUrl+"/api/v1/products/"+id,{"headers": headers,responseType: 'text'}).pipe(

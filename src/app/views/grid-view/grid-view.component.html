@@ -1,0 +1,15 @@
+<div>
+    <div class="title">
+        {{title}}
+    </div>
+    <div class="toolbar">
+        @for(tool of toolbar; track tool){
+            <button (click)="tool.action">{{tool.name}}</button>
+        } 
+    </div>
+    <div class="grid">
+        @for(item of content; track item){
+            <div class="item-grid">{{item}}</div>
+        }    
+    </div>
+</div>
