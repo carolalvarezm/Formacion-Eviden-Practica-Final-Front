@@ -13,28 +13,30 @@
             <button class="btn btn-danger" (click)="close()">Cerrar</button>
         </div>
         <div class="form">
-            <form #loginForm="ngForm">
+            <form #loginForm="ngForm"  enctype="multipart/form-data">
                 <label for="name">Nombre:</label>
                 <input class="form-control" type="text" placeholder="Nombre" name="name" [(ngModel)]="name">
                 <label for="name">Descripción:</label>
                 <input class="form-control" type="text" placeholder="Descripción" name="description" [(ngModel)]="description">
                 <label for="image">Image:</label>
-                <input class="form-control" type="image" placeholder="Imagen" name="image" [(ngModel)]="image">
+                <input class="form-control" type="file" (change)="onSelectFile($event)" placeholder="Imagen" name="image" >
+                <img *ngIf="image!=null && !isImageChanged" src="http://localhost:8080/api/v1/images/product/{{image}}" height="200"> <br/>
+                <img *ngIf="isImageChanged" src="{{image}}" height="200"> <br/>
                 <label for="cats">Categoría:</label>
                 <select  [compareWith]="compare" class="form-select" [(ngModel)]="categories" name="categories" multiple>
                     @for(cat of allCategories;track cat){
                         <option *ngIf="cat!=null" [value]="cat"  >{{cat.name}}</option>
                     }
                   </select>
-                <select  class="form-select" [compareWith]="compare"  [(ngModel)]="marca" name="marca" >
+                <select  class="form-select" (change)="onSelect()" [compareWith]="compare"  [(ngModel)]="marca" name="marca" >
                     <option selected value="null">Selecciona Marca</option>
                     @for(brand of allBrands;track brand){
                         <option  [ngValue]="brand">{{brand?.name}}</option>
                     }
                   </select>
-                  <select  class="form-select" [compareWith]="compare" [(ngModel)]="serie" name="serie" >
+                  <select  class="form-select"  [compareWith]="compare" [(ngModel)]="serie" name="serie" >
                     <option selected value="null">Selecciona Serie</option>
-                    @for(serie of allSeries;track serie){
+                    @for(serie of series;track serie){
                         <option  [ngValue]="serie">{{serie?.name}}</option>
                     }
                   </select>

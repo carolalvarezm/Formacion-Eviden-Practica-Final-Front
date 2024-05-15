@@ -26,7 +26,7 @@ constructor(private authService:AuthService, private router:Router, private user
 }
   ngOnInit(): void {
     const token=this.authService.decodeToken()
-    const user =this.userService.getUser(token.sub||'').subscribe(response =>{
+    const user =this.userService.getUser(token?.sub||'').subscribe(response =>{
       this.currentUser=response as userModel;
     })
   }

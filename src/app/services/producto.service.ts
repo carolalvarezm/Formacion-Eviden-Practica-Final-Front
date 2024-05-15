@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { catchError, throwError } from 'rxjs';
 import { environment } from '../../environments/environment.development';
 import { productoModel } from '../models/producto.model';
+import { ProductoComponent } from '../components/producto/producto.component';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,18 @@ export class ProductoService {
         catchError(this.handleError)
       );
     }
+    getByBrand(id:Number){
+      const headers=new HttpHeaders({ 'Content-Type': 'application/json' });
+      return this.httpClient.get(this.serverUrl+"/api/v1/brands/"+id+"/products",{"headers": headers}).pipe(
+        catchError(this.handleError)
+      );
+    }
+    getBySerie(id:Number){
+      const headers=new HttpHeaders({ 'Content-Type': 'application/json' });
+      return this.httpClient.get(this.serverUrl+"/api/v1/series/"+id+"/products",{"headers": headers}).pipe(
+        catchError(this.handleError)
+      );
+    }
     addProductToUser(username:string,productId:Number|null){
       const headers=new HttpHeaders({ 'Content-Type': 'application/json' });
       return this.httpClient.post(this.serverUrl+"/api/v1/users/"+username+"/products/"+productId,{},{"headers": headers, responseType:'text'}).pipe(
@@ -48,15 +61,25 @@ export class ProductoService {
         catchError(this.handleError)
       );
     }
-    editProducto(producto:productoModel){
-      const headers=new HttpHeaders({ 'Content-Type': 'application/json' });
-      return this.httpClient.put(this.serverUrl+"/api/v1/products/"+producto.id,producto,{"headers": headers,responseType: 'text'}).pipe(
+    editProducto(producto:productoModel,fichero:File){
+      const form= new FormData();
+      var productoData= new Blob([JSON.stringify(producto)], {
+        type: 'application/json'
+    });
+      form.append('file', fichero, fichero.name);
+      form.append('producto', productoData);
+      return this.httpClient.put(this.serverUrl+"/api/v1/products/"+producto.id,form,{responseType: 'text'}).pipe(
         catchError(this.handleError)
       );
     }
-    createProducto(producto:productoModel){
-      const headers=new HttpHeaders({ 'Content-Type': 'application/json' });
-      return this.httpClient.post(this.serverUrl+"/api/v1/products",producto,{"headers": headers,responseType: 'text'}).pipe(
+    createProducto(producto:productoModel,fichero:File){
+      const form= new FormData();
+      var productoData= new Blob([JSON.stringify(producto)], {
+        type: 'application/json'
+    });
+      form.append('file', fichero, fichero.name);
+      form.append('producto', productoData);
+      return this.httpClient.post(this.serverUrl+"/api/v1/products",form,{responseType: 'text'}).pipe(
         catchError(this.handleError)
       );
     }

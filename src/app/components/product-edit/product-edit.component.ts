@@ -8,6 +8,7 @@ import { marcaModel } from '../../models/marca.model';
 import { MarcaService } from '../../services/marca.service';
 import { CategoriaService } from '../../services/categoria.service';
 import { SerieService } from '../../services/serie.service';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-product-edit',
@@ -17,7 +18,8 @@ import { SerieService } from '../../services/serie.service';
 export class ProductEditComponent {
   name:String='';
   description:String='';
-  image:String|null=null;
+  image:string|ArrayBuffer|null=null;
+  imageFile:File|null=null;
   serie:serieModel|null=null;
   categories:categoriaModel[]=[];
   marca:marcaModel|null=null;
@@ -25,8 +27,8 @@ export class ProductEditComponent {
   allBrands:marcaModel[]=[];
   allCategories:categoriaModel[]=[];
   allSeries:serieModel[]=[];
-  allnumbers:Number[]=[1,2,3];
-  number:Number|null=1;
+  series:serieModel[]=[];
+  isImageChanged:Boolean=false;
   constructor(private productService:ProductoService,private serieService:SerieService,private brandService:MarcaService,private categoryService:CategoriaService,private route: ActivatedRoute,private router:Router){
   }
   ngOnInit(): void {
@@ -39,13 +41,13 @@ export class ProductEditComponent {
           const product=response as productoModel;
           this.name=product.name;
           this.description=product.description;
-          this.image=product.image;
+          this.image = product.image;
           this.id=product.id;
           this.categories=product.categories;
           this.marca=product.brand ;
           this.serie=product.serie;
         });}
-        console.log(this.marca)
+        
         this.brandService.getAll().subscribe(response=>{
           this.allBrands=response as marcaModel[];
         });
@@ -54,26 +56,59 @@ export class ProductEditComponent {
         });
         this.serieService.getAll().subscribe(response=>{
           this.allSeries=response as serieModel[];
+          this.onSelect();
         });
   }
- 
+  onSelectFile(event:any) {
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+
+      reader.readAsDataURL(event.target.files[0]); // read file as data url
+      this.imageFile=event.target.files[0];
+      reader.onload = (event) => { // called once readAsDataURL is completed
+        if(event.target)
+        this.image = event.target?.result;
+        this.isImageChanged=true;
+        
+      }
+
+   }
+  }
+ onSelect(){
+  
+  if(this.marca?.id){
+    this.series=this.allSeries.filter(item=> item.brand?.id===this.marca?.id);
+    if(this.serie?.brand?.id!=this.marca.id){
+      this.serie=null;
+    }
+  }
+  else{
+    this.series=this.allSeries;
+    this.serie=null;
+  
+  }
+  
+ }
   save(){
     const producto:productoModel={
       name:this.name,
       description:this.description,
-      image:this.image,
+      image:null,
       id:this.id,
       serie:this.serie,
       categories:this.categories,
       brand:this.marca
     }
-    if(this.id!=null){
-      this.productService.editProducto(producto).subscribe(response=>{
+    if(this.id!=null && this.imageFile){
+      this.productService.editProducto(producto,this.imageFile).subscribe(response=>{
         console.log("Se ha guardado con éxito");
+        console.log(response);
+        this.router.navigate(['producto-edit'],{queryParams: {id: response}})
       });
     }
     else{
-      this.productService.createProducto(producto).subscribe(response=>{
+      if(this.imageFile)
+      this.productService.createProducto(producto,this.imageFile).subscribe(response=>{
         console.log("Se ha guardado con éxito");
       });
     }
@@ -92,20 +127,21 @@ export class ProductEditComponent {
     const producto:productoModel={
       name:this.name,
       description:this.description,
-      image:this.image,
+      image:null,
       id:this.id,
       serie:this.serie,
       categories:this.categories,
       brand:this.marca
-
     }
-    if(this.id!=null){
-      this.productService.editProducto(producto).subscribe(response=>{
+
+    if(this.id!=null && this.imageFile){
+      this.productService.editProducto(producto,this.imageFile).subscribe(response=>{
         this.close()
       });
     }
     else{
-      this.productService.createProducto(producto).subscribe(response=>{
+      if(this.imageFile)
+      this.productService.createProducto(producto,this.imageFile).subscribe(response=>{
         this.close()
       });
     }

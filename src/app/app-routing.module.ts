@@ -24,6 +24,7 @@ const routes: Routes = [
   {path:"marcas", component:MarcasComponent,canActivate:[authGuard]},
   {path:"categorias",component:CategoriasComponent,canActivate:[authGuard]},
   {path:"productos",component:ProductosComponent,canActivate:[authGuard]},
+  {path:"productos/my",component:ProductosComponent,canActivate:[authGuard]},
   {path:"series",component:SeriesComponent,canActivate:[authGuard]},
   {path:"marca-edit",component:MarcaEditComponent,canActivate:[authGuard]},
   {path:"categoria-edit",component:CategoriasEditComponent,canActivate:[authGuard]},

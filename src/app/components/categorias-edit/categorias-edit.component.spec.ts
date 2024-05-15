@@ -1,6 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CategoriasEditComponent } from './categorias-edit.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+
 
 describe('CategoriasEditComponent', () => {
   let component: CategoriasEditComponent;
@@ -8,7 +13,12 @@ describe('CategoriasEditComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CategoriasEditComponent]
+      declarations: [CategoriasEditComponent],
+      imports: [
+        HttpClientTestingModule,
+        RouterModule.forRoot([]),
+        FormsModule,
+      ],
     })
     .compileComponents();
     

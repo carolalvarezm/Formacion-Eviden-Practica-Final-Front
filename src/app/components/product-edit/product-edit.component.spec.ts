@@ -1,6 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProductEditComponent } from './product-edit.component';
+import { HttpClientTestingModule} from '@angular/common/http/testing';
+import { FormsModule } from '@angular/forms';
+import { RouterModule} from '@angular/router';
+
 
 describe('ProductEditComponent', () => {
   let component: ProductEditComponent;
@@ -8,7 +12,12 @@ describe('ProductEditComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ProductEditComponent]
+      declarations: [ProductEditComponent],
+      imports: [
+        FormsModule,
+        HttpClientTestingModule,
+        RouterModule.forRoot([])
+      ],
     })
     .compileComponents();
     

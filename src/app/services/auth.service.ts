@@ -1,5 +1,5 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { ErrorHandler, Injectable } from '@angular/core';
 import { userModel } from '../models/user.model';
 import { BehaviorSubject, catchError, map, tap, throwError } from 'rxjs';
 import { authResponse } from '../models/auth.model';
@@ -44,16 +44,30 @@ export class AuthService {
 
   }
   getToken(){
+    if(sessionStorage.getItem("token"))
     return sessionStorage.getItem("token");
+  else return null;
   }
   decodeToken(){
-      return jwtDecode(this.getToken()||'');
+    try{
+      const token=this.getToken()
+      if(token!=null)
+        return jwtDecode(token);
+      return undefined;
+    }
+    catch(error){
+      console.error("Se ha producido un error:",error);
+      return undefined;
+
+    }
+
   }
   islogin(){
     return sessionStorage.getItem("token");
   }
   isValid(){
-    const expiration:number|undefined=this.decodeToken().exp;
+ 
+    const expiration:number|undefined=this.decodeToken()?.exp;
     if(expiration!=undefined && expiration < Date.now()){
       return true;
     }

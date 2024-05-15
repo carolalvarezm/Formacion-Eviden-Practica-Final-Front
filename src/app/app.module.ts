@@ -63,6 +63,7 @@ import { SerieEditComponent } from './components/serie-edit/serie-edit.component
     AuthService,
     UserService,
     MarcaService,
+    HttpClientModule,
     provideHttpClient(withInterceptors([jwtInterceptor])),
   ],
   bootstrap: [AppComponent]

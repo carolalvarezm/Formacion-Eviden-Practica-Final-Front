@@ -20,7 +20,9 @@ export class SerieComponent {
   
   constructor(private router:Router,private serieService:SerieService){
   }
-  
+  productos(){
+    this.router.navigate(['productos'],{queryParams: {serie: this.serie.id}})
+  }
   edit(){
     this.router.navigate(['serie-edit'],{queryParams: {id: this.serie.id}})
   }
