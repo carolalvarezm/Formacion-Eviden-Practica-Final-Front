@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { registeRequest } from '../../models/registerRequest';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -8,7 +10,7 @@ import { registeRequest } from '../../models/registerRequest';
   styleUrl: './register.component.scss'
 })
 export class RegisterComponent {
-constructor(){
+constructor(private authService:AuthService,private router:Router){
 
 }
 register(form:NgForm){
@@ -19,6 +21,8 @@ register(form:NgForm){
     firstname:form.value.firstname,
     lastname:form.value.lastname
   }
-
+  this.authService.register(user).subscribe((response)=>{
+    this.router.navigate(['/perfil'])
+  });
 }
 }
